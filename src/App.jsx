@@ -38,6 +38,7 @@ function App() {
         formDataObj={formData}
         handleChange={handleChange}
         handleAplicar={handleAplicar}
+        camerasRover={camerasRover}
       />
     </>
   )

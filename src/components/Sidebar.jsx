@@ -6,12 +6,12 @@ import 'bootstrap/js/dist/collapse'
 
 import Form from "./Form"
 
-export default function Sidebar({formDataObj, handleChange, handleAplicar}){
+export default function Sidebar({formDataObj, handleChange, handleAplicar, camerasRover}){
     //console.log(formDataObj, handleChange)
     return (
         <div className="container-fluid">
             <div className='row'>
-                <div className='col-auto col-sm-4 bg-dark d-flex flex-column justify-content-between min-vh-100'>
+                <div className='col-auto col-sm-3 bg-dark d-flex flex-column justify-content-between min-vh-100'>
                     <div className="mt-3">
                         <a className='text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline' role="button">
                             <span className="fs-4">Mars Vision</span>
@@ -41,11 +41,12 @@ export default function Sidebar({formDataObj, handleChange, handleAplicar}){
                                             <span className="d-none d-sm-inline">Item</span>2
                                         </a>
                                     </li>
-                                    {/*  */}
+                                    {/* */}
                                     <Form 
                                         formDataObj={formDataObj}
                                         handleChange={handleChange}
                                         handleAplicar={handleAplicar}
+                                        camerasRover={camerasRover}
                                     />
                                 </ul>
                             </li>

@@ -1,8 +1,8 @@
-import camerasData from '../cameras'
-
-export default function Form({formDataObj, handleChange, handleAplicar}){
+export default function Form({formDataObj, handleChange, handleAplicar, camerasRover}){
+    console.log(camerasRover)
     return (
         <div className="text-white text-start">
+            {/**/}
             <div id="campo-rover">
                 <label htmlFor='rover'>Rover</label>
                 <div className="px-2 py-1">
@@ -54,19 +54,19 @@ export default function Form({formDataObj, handleChange, handleAplicar}){
             <div id="campo-camera">
                 <label htmlFor='camera'>Camera</label>
                 {
-                    camerasData[formDataObj.rover].map(
-                        (e, i) => {
+                    camerasRover.map(
+                        (camera, i) => {
                             return(
                                 <div className="px-2 py-1" key={i}>
                                     <input
                                         type="radio"
-                                        id={`${e.nome}`}
+                                        id={`${camera.nome}`}
                                         name="camera"
-                                        value={`${e.abbreviation}`}
-                                        onChange={handleChange}
-                                        checked={formDataObj.camera === `${e.nome}`}
+                                        value={`${camera.abbreviation}`}
+                                        
+                                        checked={formDataObj.camera === `${camera.nome}`}
                                     />
-                                    <label htmlFor={`${e.nome}`} className="mx-2">{camerasData[formDataObj.rover]}</label>
+                                    <label htmlFor={`${camera.nome}`} className="mx-2">{camera.nome}</label>
                                 </div>
                             )
                         }
@@ -75,6 +75,7 @@ export default function Form({formDataObj, handleChange, handleAplicar}){
                 }
             </div>
             <button className="btn btn-success" onClick={handleAplicar}>Aplicar</button>
+            
         </div>
     )
 }
