@@ -4,7 +4,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/collapse'
 
-export default function Sidebar(){
+import Form from "./Form"
+
+export default function Sidebar({formDataObj, handleChange, handleAplicar}){
+    //console.log(formDataObj, handleChange)
     return (
         <div className="container-fluid">
             <div className='row'>
@@ -38,6 +41,12 @@ export default function Sidebar(){
                                             <span className="d-none d-sm-inline">Item</span>2
                                         </a>
                                     </li>
+                                    {/*  */}
+                                    <Form 
+                                        formDataObj={formDataObj}
+                                        handleChange={handleChange}
+                                        handleAplicar={handleAplicar}
+                                    />
                                 </ul>
                             </li>
                             <li className="nav-item my-1 py-2 py-sm-0">
@@ -52,9 +61,9 @@ export default function Sidebar(){
                                     <span className="ms-2 d-none d-sm-inline">Costumers</span>
                                 </a>
                             </li>
+                            
                         </ul>
                     </div>
-                    
                 </div>
             </div>
         </div>
