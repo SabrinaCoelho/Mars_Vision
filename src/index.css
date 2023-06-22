@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+#root{
+  padding: 0;
+  max-width: 100%;
+}
+#parentD li a:hover{
+  background-color: orange;
+}
