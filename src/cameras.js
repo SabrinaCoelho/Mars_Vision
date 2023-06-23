@@ -11,20 +11,20 @@ const camerasData = {
     ],
     curiosity: [
         {
-            nome: "Front Hazard Avoidance Camera",
-            abbreviation: "FHAZ"
+            nome: "curiosity",
+            abbreviation: "curiosity"
         },
     ],
     opportunity: [
         {
-            nome: "Front Hazard Avoidance Camera",
-            abbreviation: "FHAZ"
+            nome: "opportunity",
+            abbreviation: "opportunity"
         },
     ],
     spirit: [
         {
-            nome: "Front Hazard Avoidance Camera",
-            abbreviation: "FHAZ"
+            nome: "spirit",
+            abbreviation: "spirit"
         },
     ]
 }

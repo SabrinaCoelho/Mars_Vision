@@ -2,7 +2,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
     console.log(camerasRover)
     return (
         <div className="text-white text-start">
-            {/**/}
+            
             <div id="campo-rover">
                 <label htmlFor='rover'>Rover</label>
                 <div className="px-2 py-1">
@@ -50,7 +50,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                     <label htmlFor='spirit' className="mx-2">Spirit</label>
                 </div>
             </div>
-            
+            {/**/}
             <div id="campo-camera">
                 <label htmlFor='camera'>Camera</label>
                 {
@@ -63,8 +63,8 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                                         id={`${camera.nome}`}
                                         name="camera"
                                         value={`${camera.abbreviation}`}
-                                        
-                                        checked={formDataObj.camera === `${camera.nome}`}
+                                        onChange={handleChange}
+                                        checked={formDataObj.camera === camera.nome}
                                     />
                                     <label htmlFor={`${camera.nome}`} className="mx-2">{camera.nome}</label>
                                 </div>
@@ -74,6 +74,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                     
                 }
             </div>
+            
             <button className="btn btn-success" onClick={handleAplicar}>Aplicar</button>
             
         </div>

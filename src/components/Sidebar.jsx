@@ -7,7 +7,7 @@ import 'bootstrap/js/dist/collapse'
 import Form from "./Form"
 
 export default function Sidebar({formDataObj, handleChange, handleAplicar, camerasRover}){
-    //console.log(formDataObj, handleChange)
+    console.log(formDataObj, camerasRover)
     return (
         <div className="container-fluid">
             <div className='row'>
@@ -31,6 +31,7 @@ export default function Sidebar({formDataObj, handleChange, handleAplicar, camer
                                     <i className="bi bi-arrow-down-short ms-0 ms-sm-2" ></i>
                                 </a>
                                 <ul className="nav collapse ms-2 flex-column" id="submenu" data-bs-parent="parentD">
+                                    {/*
                                     <li className="nav-item">
                                         <a className="nav-link text-white " href="#" aria-current="page">
                                             <span className="d-none d-sm-inline">Item</span>1
@@ -41,6 +42,7 @@ export default function Sidebar({formDataObj, handleChange, handleAplicar, camer
                                             <span className="d-none d-sm-inline">Item</span>2
                                         </a>
                                     </li>
+                                    */}
                                     {/* */}
                                     <Form 
                                         formDataObj={formDataObj}
@@ -48,8 +50,10 @@ export default function Sidebar({formDataObj, handleChange, handleAplicar, camer
                                         handleAplicar={handleAplicar}
                                         camerasRover={camerasRover}
                                     />
+                                    
                                 </ul>
                             </li>
+                            {/* 
                             <li className="nav-item my-1 py-2 py-sm-0">
                                 <a href="#" className="nav-link text-white text-center text-sm-start" aria-current="page">
                                     <i className="bi bi-house"></i>
@@ -62,7 +66,7 @@ export default function Sidebar({formDataObj, handleChange, handleAplicar, camer
                                     <span className="ms-2 d-none d-sm-inline">Costumers</span>
                                 </a>
                             </li>
-                            
+                            */}
                         </ul>
                     </div>
                 </div>
