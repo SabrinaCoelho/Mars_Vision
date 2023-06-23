@@ -56,6 +56,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                 {
                     camerasRover.map(
                         (camera, i) => {
+                            console.log(formDataObj.camera, camera.nome)
                             return(
                                 <div className="px-2 py-1" key={i}>
                                     <input
@@ -64,14 +65,13 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                                         name="camera"
                                         value={`${camera.abbreviation}`}
                                         onChange={handleChange}
-                                        checked={formDataObj.camera === camera.nome}
+                                        checked={formDataObj.camera === camera.abbreviation}
                                     />
                                     <label htmlFor={`${camera.nome}`} className="mx-2">{camera.nome}</label>
                                 </div>
                             )
                         }
                     )
-                    
                 }
             </div>
             
