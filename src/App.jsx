@@ -26,13 +26,11 @@ function App() {
         console.log(a)
         return a
     });
-    handleChangeCameras(target.value)
+    target.name === "rover" ? updateCameras(target.value) : null // ADDED
     //console.log(camerasData[formData.rover]);
   }
-  function handleChangeCameras(rover){
+  function updateCameras(rover){
     setCamerasRover(prev => {
-      console.log(prev)
-      console.log(camerasData[rover])
       return camerasData[rover]
     });
     console.log(camerasRover)
