@@ -103,7 +103,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                 </div>
             </div>
             <div className="my-4">
-                <button className="btn btn-success" onClick={handleAplicar}>Aplicar</button>
+                <button className="btn btn-secondary" onClick={handleAplicar}>Aplicar</button>
             </div>
         </div>
     )

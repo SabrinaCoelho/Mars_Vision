@@ -15,14 +15,12 @@ function App() {
     latest: "",
   });
   const [camerasRover, setCamerasRover] = React.useState(camerasData.perseverance);
-  const [imagem, setImagem] = React.useState("");
+  const [imagem, setImagem] = React.useState([]);
   const [indexImage, setIndexImage] = React.useState(0)
   //console.log(camerasRover)
   const [manifest, setManifest] = React.useState(() => {
     axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${formData.rover}?api_key=PPmxgFa09jTlS90916LFYy5hM7hHLY7WcBTkXga1`)
       .then(res => {
-        console.log(res.data.photo_manifest)
-        console.log(res.data.photo_manifest.max_sol)
         return {
           max_sol: res.data.photo_manifest.max_sol, 
           max_date: res.data.photo_manifest.max_date,
@@ -33,21 +31,16 @@ function App() {
         return {}
       })
   });
-  console.log(manifest)
   React.useEffect(() => {
     axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${formData.rover}?api_key=PPmxgFa09jTlS90916LFYy5hM7hHLY7WcBTkXga1`)
     .then(res => {
-      console.log(res.data.photo_manifest)
-      console.log(res.data.photo_manifest.max_sol)
       setManifest({
         max_sol: res.data.photo_manifest.max_sol, 
         max_date: res.data.photo_manifest.max_date,
         landing_date: res.data.photo_manifest.landing_date
       })
     })
-    .catch(err => {
-      return setManifest({})
-    })
+    .catch(err => setManifest({}))
   }, [formData.rover])
   
 
@@ -55,7 +48,6 @@ function App() {
     
     setFormData(prevFormData => {
         const {name, value, type, checked} = target
-        console.log(name, value, type, checked)
         const a = {
           ...prevFormData,
           [name]: type === "checkbox" ? checked : value
@@ -65,35 +57,30 @@ function App() {
         }else{
           buscaPerSol = true
         }
-        console.log(a)
         return a
     });
     target.name === "rover" ? updateCameras(target.value) : null 
-    //console.log(camerasData[formData.rover]);
   }
   function updateCameras(rover){
-    setCamerasRover(prev => {
-      return camerasData[rover]
-    });
+    setCamerasRover(prev => camerasData[rover]);
   }
-  function updateImage(){
-    setIndexImage(prev => prev + 1)
-    handleAplicar()
+  function proxImagem(){
+    setIndexImage(prev => prev + 1 < imagem.length ? prev + 1 : prev)
+    
+  }
+  function antImagem(){
+    setIndexImage(prev => prev - 1 > 0 ? prev - 1 : prev)
   }
   function handleAplicar(){
     if(buscaPerSol){
       axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${formData.rover}/photos?api_key=${key}&sol=${formData.perSol}&camera=${formData.camera}`)
       .then(res => {
-        console.log(res.data.photos)
-        setImagem(res.data.photos.length ? res.data.photos[indexImage].img_src : "")
+        setImagem(res.data.photos.length ? res.data.photos : [])
       })
       .catch(err => console.error(err));
     }else{
       axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${formData.rover}/photos?api_key=${key}&earth_date=${formData.earthDate}&camera=${formData.camera}`)
-      .then(res => {
-        console.log(res.data.photos)
-        setImagem(res.data.photos.length ? res.data.photos[indexImage].img_src : "")
-      })
+      .then(res => setImagem(res.data.photos.length ? res.data.photos : []))
       .catch(err => console.error(err));
     }
     
@@ -107,8 +94,9 @@ function App() {
         handleAplicar={handleAplicar}
         camerasRover={camerasRover}
         manifest={manifest}
-        imagem={imagem}
-        updateImage={updateImage}
+        imagem={imagem.length ? imagem[indexImage].img_src : ""}
+        proxImagem={proxImagem}
+        antImagem={antImagem}
       />
     </div>
   )
