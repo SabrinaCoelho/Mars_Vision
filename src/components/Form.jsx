@@ -1,5 +1,5 @@
-export default function Form({formDataObj, handleChange, handleAplicar, camerasRover}){
-    console.log(camerasRover)
+export default function Form({formDataObj, handleChange, handleAplicar, camerasRover, manifest}){
+    console.log(manifest)
     return (
         <div className="text-white text-start">
             
@@ -56,7 +56,7 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                 {
                     camerasRover.map(
                         (camera, i) => {
-                            console.log(formDataObj.camera, camera.nome)
+                            //console.log(formDataObj.camera, camera.nome)
                             return(
                                 <div className="px-2 py-1" key={i}>
                                     <input
@@ -74,9 +74,37 @@ export default function Form({formDataObj, handleChange, handleAplicar, camerasR
                     )
                 }
             </div>
-            
-            <button className="btn btn-success" onClick={handleAplicar}>Aplicar</button>
-            
+            <div className="campo-data">
+                <div className="my-2">
+                    <label htmlFor="perSol" className="form-label">Por sol</label>
+                    <br/>
+                    <label htmlFor="" className="">0</label>
+                    <input 
+                        type="range" 
+                        className="form-range" 
+                        id="perSol"
+                        name="perSol"
+                        onChange={handleChange}
+                        max={manifest && manifest.max_sol ? manifest.max_sol : ""}
+                    />
+                    <label htmlFor="" className="">{manifest && manifest.max_sol ? manifest.max_sol : ""}</label>
+                </div>
+                <div className="my-2">
+                    <label htmlFor="earthDate" className="form-label">Per data terrestre</label>
+                    <input 
+                        type="date"
+                        className="form-control" 
+                        id="earthDate"
+                        name="earthDate"
+                        min={manifest && manifest.landing_date ? manifest.landing_date : ""} 
+                        max={manifest && manifest.max_date ? manifest.max_date : ""}
+                        onChange={handleChange}
+                    />
+                </div>
+            </div>
+            <div className="my-4">
+                <button className="btn btn-success" onClick={handleAplicar}>Aplicar</button>
+            </div>
         </div>
     )
 }
