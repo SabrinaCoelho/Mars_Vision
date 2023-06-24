@@ -1,5 +1,4 @@
 export default function Form({formDataObj, handleChange, handleAplicar, camerasRover, manifest}){
-    console.log(manifest)
     return (
         <div className="text-white text-start">
             
